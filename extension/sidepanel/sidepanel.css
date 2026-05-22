@@ -1,0 +1,441 @@
+/* ============================================================
+  Embedded Finance Agent — Side panel styles
+  SAP Fiori-inspired light theme
+  ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'SAP-icons';
+  src: url('https://ui5.sap.com/resources/sap/ui/core/themes/sap_horizon/fonts/SAP-icons.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --bg:          #edf3f8;
+  --surface:     #ffffff;
+  --surface2:    #f5f8fb;
+  --accent:      #0a6ed1;
+  --accent-strong:#085caf;
+  --accent-dim:  rgba(10, 110, 209, 0.10);
+  --text:        #223548;
+  --text-muted:  #556b82;
+  --border:      #d5e3ee;
+  --shadow:      0 0.125rem 0.5rem rgba(34, 53, 72, 0.08);
+  --radius:      12px;
+  font-size: 16px;
+  font-family: '72', '72full', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background:
+    linear-gradient(180deg, rgba(10, 110, 209, 0.08), transparent 18%),
+    var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Top bar ───────────────────────────────────────────────── */
+
+.topbar {
+  padding: 12px 14px 10px;
+  background: linear-gradient(180deg, #fdfefe 0%, #f2f7fb 100%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.topbar-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.topbar-label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+#model-indicator {
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Cards ─────────────────────────────────────────────────── */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px 14px;
+  margin: 10px 12px 0;
+  flex-shrink: 0;
+}
+
+.card.grow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* ── Context fields (definition list) ──────────────────────── */
+
+.context-fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  align-items: baseline;
+}
+
+.context-fields dt {
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  white-space: nowrap;
+}
+
+.context-fields dd {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  word-break: break-word;
+  min-width: 0;
+}
+
+/* ── Collapsible sections ──────────────────────────────────── */
+
+.panel-details {
+  font-size: 0.875rem;
+}
+
+.panel-details > summary {
+  cursor: pointer;
+  color: var(--accent);
+  list-style: none;
+  user-select: none;
+}
+
+.panel-details > summary::before {
+  content: '▶  ';
+  font-size: 9px;
+}
+
+.panel-details[open] > summary::before {
+  content: '▼  ';
+}
+
+.panel-details[open] > summary {
+  margin-bottom: 8px;
+}
+
+.connection-details > summary {
+  color: var(--text-muted);
+}
+
+.details-section-label {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heading-item {
+  padding: 5px 0;
+  color: var(--text);
+  border-bottom: 1px solid #edf3f8;
+}
+
+.heading-item:last-child {
+  border-bottom: none;
+}
+
+/* ── Table preview ─────────────────────────────────────────── */
+
+.table-preview {
+  overflow-x: auto;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fbfdff;
+}
+
+.data-table {
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  width: 100%;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid var(--border);
+  padding: 5px 8px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.data-table th {
+  background: var(--surface2);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.data-table tbody tr:hover {
+  background: var(--accent-dim);
+}
+
+/* ── Messages ──────────────────────────────────────────────── */
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+.message {
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  max-width: 95%;
+}
+
+.message-user {
+  background: #ebf5fe;
+  border: 1px solid rgba(10, 110, 209, 0.24);
+  align-self: flex-end;
+}
+
+.message-assistant {
+  background: var(--surface2);
+  border-left: 2px solid var(--accent);
+  align-self: flex-start;
+}
+
+.message-role {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.message p {
+  margin: 0;
+}
+
+/* Links produced by renderMarkdown() inside assistant replies */
+.message-assistant p a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(10, 132, 255, 0.4);
+  word-break: break-all;
+}
+.message-assistant p a:hover {
+  border-bottom-color: var(--accent);
+  text-decoration: none;
+}
+
+/* ── Composer ──────────────────────────────────────────────── */
+
+.composer {
+  display: flex;
+  gap: 0.5rem;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--border);
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+#prompt-input {
+  flex: 1;
+  min-width: 0;
+  background: #f9fbfd;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.875rem;
+  font-family: inherit;
+  padding: 0.625rem 0.75rem;
+  resize: none;
+  outline: none;
+  line-height: 1.45;
+}
+
+#prompt-input:focus {
+  border-color: var(--accent);
+}
+
+#prompt-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+
+.primary-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  min-height: 2.25rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.45;
+}
+
+.primary-btn:hover {
+  background: #0b5cad;
+}
+
+.primary-btn:active {
+  background: #084b8a;
+}
+
+.icon-btn {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0070f2;
+  border: 0.0625rem solid #0070f2;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: none;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.icon-btn::before {
+  font-family: 'SAP-icons';
+  font-size: 1rem;
+  line-height: 1;
+  color: currentColor;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#refresh-btn::before {
+  content: '\e010';
+}
+
+#settings-btn::before {
+  content: '\e0a6';
+}
+
+.icon-btn:hover {
+  background: #0064d9;
+  border-color: #0064d9;
+}
+
+.icon-btn:active {
+  transform: translateY(1px);
+  background: #ffffff;
+  border-color: #0064d9;
+  color: #0064d9;
+}
+
+.icon-btn:focus-visible,
+.primary-btn:focus-visible,
+#prompt-input:focus-visible,
+.panel-details > summary:focus-visible {
+  outline: 2px solid rgba(10, 110, 209, 0.35);
+  outline-offset: 2px;
+}
+
+/* ── Utilities ─────────────────────────────────────────────── */
+
+.muted  { color: var(--text-muted); }
+.small  { font-size: 0.75rem; }
+
+/* ── Footer ────────────────────────────────────────────────── */
+
+.footer {
+  padding: 6px 14px 10px;
+  background: transparent;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }

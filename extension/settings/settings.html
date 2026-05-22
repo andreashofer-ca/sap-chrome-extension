@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Settings — Embedded Finance Agent</title>
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-header">
+        <div class="brand">Embedded Finance Agent</div>
+        <div class="page-title">Settings</div>
+      </header>
+
+      <main class="form-wrap">
+        <!-- ── Provider selection ─────────────────────────── -->
+        <section class="card">
+          <h2 class="section-title">LLM Provider</h2>
+
+          <div class="radio-group">
+            <label class="radio-option" id="opt-claude">
+              <input type="radio" name="provider" value="claude" />
+              <span class="radio-label">
+                <strong>Anthropic Claude</strong>
+                <span class="muted">API key · best quality</span>
+              </span>
+            </label>
+            <label class="radio-option" id="opt-ollama">
+              <input type="radio" name="provider" value="ollama" />
+              <span class="radio-label">
+                <strong>Ollama</strong>
+                <span class="muted">Local inference · no data leaves your machine</span>
+              </span>
+            </label>
+          </div>
+        </section>
+
+        <!-- ── Claude config ──────────────────────────────── -->
+        <section class="card" id="claude-section">
+          <h2 class="section-title">Claude configuration</h2>
+
+          <div class="field">
+            <label for="claude-key">API key</label>
+            <input
+              type="password"
+              id="claude-key"
+              placeholder="sk-ant-api03-…"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <p class="field-hint">
+              Get yours at
+              <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer">
+                console.anthropic.com
+              </a>
+              — stored locally, never synced.
+            </p>
+          </div>
+
+          <div class="field">
+            <label for="claude-model">Model</label>
+            <input
+              type="text"
+              id="claude-model"
+              placeholder="claude-haiku-4-5"
+              spellcheck="false"
+            />
+            <p class="field-hint">
+              Suggested:
+              <code>claude-haiku-4-5</code> (fast) ·
+              <code>claude-sonnet-4-5</code> (capable) ·
+              <code>claude-opus-4-5</code> (best)
+            </p>
+          </div>
+        </section>
+
+        <!-- ── Ollama config ──────────────────────────────── -->
+        <section class="card" id="ollama-section">
+          <h2 class="section-title">Ollama configuration</h2>
+
+          <div class="field">
+            <label for="ollama-endpoint">Endpoint URL</label>
+            <input
+              type="url"
+              id="ollama-endpoint"
+              placeholder="http://localhost:11434"
+              spellcheck="false"
+            />
+            <p class="field-hint">
+              Default is <code>http://localhost:11434</code>. Non-localhost endpoints
+              may be blocked by the browser — localhost is pre-approved.
+            </p>
+          </div>
+
+          <div class="field">
+            <label for="ollama-model">Model name</label>
+            <input
+              type="text"
+              id="ollama-model"
+              list="ollama-models"
+              placeholder="llama3.2"
+              spellcheck="false"
+            />
+            <datalist id="ollama-models"></datalist>
+            <p class="field-hint">
+              Run <code>ollama pull llama3.2</code> first if the model isn't local yet.
+            </p>
+          </div>
+        </section>
+
+        <!-- ── Actions ────────────────────────────────────── -->
+        <div class="actions">
+          <button id="save-btn" class="primary-btn">Save settings</button>
+          <button id="test-btn" class="secondary-btn">Test connection</button>
+          <span id="save-status" class="save-status"></span>
+        </div>
+        <div id="test-result" class="test-result hidden"></div>
+      </main>
+    </div>
+
+    <script src="settings.js" type="module"></script>
+  </body>
+</html>

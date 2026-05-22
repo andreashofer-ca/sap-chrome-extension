@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Embedded Finance Agent",
+  "version": "0.1.0",
+  "description": "Expert analysis and navigation for SAP S/4HANA Public Cloud, focused on Embedded Finance use cases (Invoice Financing, Request to Pay, Cashflow, AR Factoring, PO Financing).",
+  "minimum_chrome_version": "116",
+  "action": {
+    "default_title": "Open Embedded Finance Agent"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/index.html"
+  },
+  "options_page": "settings/settings.html",
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.s4hana.cloud.sap/*",
+    "*://*.hana.ondemand.com/*",
+    "https://api.anthropic.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.s4hana.cloud.sap/*",
+        "*://*.hana.ondemand.com/*"
+      ],
+      "js": [
+        "content/fiori-detector.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["catalog/seed.json"],
+      "matches": ["*://*.s4hana.cloud.sap/*"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://api.anthropic.com http://localhost:* http://127.0.0.1:*"
+  }
+}

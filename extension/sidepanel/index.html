@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Embedded Finance Agent</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-status">
+        <span class="topbar-label">Model</span>
+        <span class="muted small" id="model-indicator">Checking…</span>
+        <span class="muted small" id="status">Detecting…</span>
+      </div>
+      <div class="topbar-actions">
+        <button id="refresh-btn" class="icon-btn" type="button" title="Refresh" aria-label="Refresh" data-sap-icon="refresh"></button>
+        <button id="settings-btn" class="icon-btn" type="button" title="Settings" aria-label="Settings" data-sap-icon="action-settings"></button>
+      </div>
+    </header>
+
+    <section id="context-card" class="card">
+      <details class="panel-details connection-details">
+        <summary class="card-title">APP DATA</summary>
+        <dl class="context-fields">
+          <dt>Fiori app</dt>
+          <dd id="ctx-app">—</dd>
+          <dt>Intent</dt>
+          <dd id="ctx-intent">—</dd>
+          <dt>Table</dt>
+          <dd id="ctx-table">—</dd>
+          <dt>Tenant</dt>
+          <dd id="ctx-tenant">—</dd>
+        </dl>
+        <div class="details-section-label">Headings / visible data</div>
+        <div id="ctx-headings" class="muted"></div>
+        <div id="ctx-table-preview" class="table-preview"></div>
+      </details>
+    </section>
+
+    <section id="chat-card" class="card grow">
+      <div id="messages" class="messages"></div>
+      <form id="composer" class="composer">
+        <textarea
+          id="prompt-input"
+          placeholder="Ask about this screen…"
+          rows="2"
+        ></textarea>
+        <button type="submit" class="primary-btn">Send</button>
+      </form>
+    </section>
+
+    <footer class="footer muted small">
+      MVP 3 · dev build
+    </footer>
+
+    <script src="../grounding/catalog.js"></script>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
