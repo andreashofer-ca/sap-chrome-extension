@@ -94,7 +94,7 @@ window.FIORI_CATALOG = {
  * Format:
  *   https://<host>/ui?sap-language=en#<SemanticObject>-<Action>?<params>
  *
- * @param {string} host   - Tenant hostname, e.g. "my429998.s4hana.cloud.sap"
+ * @param {string} host   - Tenant hostname, e.g. "your-tenant.s4hana.cloud.sap" (anonymized example)
  * @param {string} intent - Fiori intent key, e.g. "Customer-manageLineItems"
  * @param {Object} params - Optional user-supplied parameter key/value pairs
  * @returns {string} Full navigation URL ready to use as an href

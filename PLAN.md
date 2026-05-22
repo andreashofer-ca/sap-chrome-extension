@@ -123,7 +123,7 @@ Goal: close the loop — the extension can actually call out to a financing or p
 ## 5. Research answers (resolved 2026-04-20)
 
 1. **Fiori app ID extraction.** The URL hash carries a `#<SemanticObject>-<Action>` intent — e.g., `#Customer-manageLineItems`. We use that intent string as the primary lookup key and resolve it against our scraped catalog to get the F-number (e.g., `F0711` for Customer-manageLineItems) and the rest of the app metadata.
-   - Example URL: `https://my429998.s4hana.cloud.sap/ui?sap-language=en&help-mixedLanguages=false#Customer-manageLineItems&/?sap-iapp-state=...`
+  - Example URL (tenant anonymized): `https://your-tenant.s4hana.cloud.sap/ui?sap-language=en&help-mixedLanguages=false#Customer-manageLineItems&/?sap-iapp-state=...`
    - Fiori Apps Library detail URL pattern: `https://fioriappslibrary.hana.ondemand.com/sap/fix/externalViewer/#/detail/Apps('<F-number>')/S36`
 2. **Fiori Apps Library data.** No API. We scrape once and bundle the catalog. Use a cheap Claude model (Haiku-class) to normalize the scraped HTML into structured JSON — this is a one-time offline build step, not runtime.
 3. **Initial scope.** Start with **Invoice Financing** and **Request to Pay**, anchored on the **Customer - Manage Line Items** app (F0711, intent `Customer-manageLineItems`). Everything in MVPs 3 and 4 is built against that app first, then expanded.
